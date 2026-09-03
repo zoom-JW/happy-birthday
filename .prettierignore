@@ -1,0 +1,7 @@
+node_modules
+dist
+build
+public
+*.ico
+*.png
+*.jpg
