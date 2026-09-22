@@ -1,0 +1,16 @@
+@import './abstracts/variavles';
+@import './abstracts/mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-main;
+  background: $bg-gradient;
+  min-height: 100vh;
+  color: #2d3436;
+  overflow-x: hidden;
+}

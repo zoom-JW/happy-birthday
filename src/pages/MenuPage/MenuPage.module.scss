@@ -1,0 +1,83 @@
+@import '../../style/abstracts/_variavles';
+@import '../../style/abstracts/_mixins';
+
+.container {
+  @include flex-center;
+  min-height: 100vh;
+  padding: 20px;
+  background: $bg-gradient;
+}
+
+.card {
+  @include flex-column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: $radius-card;
+  box-shadow: $shadow-main;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3436;
+  margin-bottom: 30px;
+}
+
+.levelsList {
+  @include flex-column;
+  gap: 16px;
+  width: 100%;
+}
+
+.levelBtn {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, $primary-color 0%, #ff6b81 100%);
+  border: none;
+  border-radius: $radius-btn;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255, 71, 87, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.5);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.card {
+  /* имеющиеся стили card */
+}
+
+.backButton {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #636e72;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #2d3436;
+  }
+}

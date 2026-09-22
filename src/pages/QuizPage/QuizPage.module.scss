@@ -1,0 +1,197 @@
+@import '../../style/abstracts/_variavles';
+@import '../../style/abstracts/_mixins';
+
+.container {
+  @include flex-column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: $bg-gradient;
+  user-select: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 12px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #2d3436;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 12px;
+  box-shadow: $shadow-main;
+}
+
+.progressCounter {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.progressBarBg {
+  width: 100%;
+  max-width: 600px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: #2ed573;
+  border-radius: 5px;
+}
+
+.card {
+  @include flex-column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 32px 24px;
+  border-radius: $radius-card;
+  box-shadow: $shadow-main;
+  max-width: 600px;
+  width: 100%;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.iconBadge {
+  background: #ffeaa7;
+  padding: 14px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.questionText {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2d3436;
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.optionsList {
+  @include flex-column;
+  gap: 12px;
+  width: 100%;
+}
+
+.optionBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2d3436;
+  background: #ffffff;
+  border: 2px solid #dfe4ea;
+  border-radius: $radius-btn;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
+    background: #fff0f2;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.correct {
+  background: #2ed57315 !important;
+  border-color: #2ed573 !important;
+  color: #26af5f !important;
+  font-weight: 700;
+}
+
+.wrong {
+  background: #ff475715 !important;
+  border-color: #ff4757 !important;
+  color: #d63031 !important;
+  font-weight: 700;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 3px solid #ff4757;
+
+  h2 {
+    font-size: 1.6rem;
+    color: #2d3436;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #636e72;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+}
+
+.modalButton {
+  background: #ff4757;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    background: #ff6b81;
+    transform: translateY(-2px);
+  }
+}

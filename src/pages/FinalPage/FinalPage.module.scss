@@ -1,0 +1,110 @@
+@import '../../style/abstracts/_variavles';
+@import '../../style/abstracts/_mixins';
+
+.container {
+  @include flex-center;
+  min-height: 100vh;
+  padding: 20px;
+  background: $bg-gradient;
+}
+
+.card {
+  @include flex-column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: $radius-card;
+  box-shadow: $shadow-main;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.iconBadge {
+  background: #eccc6833;
+  padding: 20px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamsterEmoji {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d3436;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 1.05rem;
+  color: #636e72;
+  margin-bottom: 24px;
+}
+
+.rewardBox {
+  @include flex-center;
+  gap: 10px;
+  background: #2ed57315;
+  border: 2px dashed #2ed573;
+  padding: 16px 24px;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.rewardValue {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2ed573;
+}
+
+.buttonsGroup {
+  @include flex-column;
+  gap: 12px;
+  width: 100%;
+}
+
+.primaryButton {
+  @include flex-center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, $primary-color 0%, #ff6b81 100%);
+  border: none;
+  border-radius: $radius-btn;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255, 71, 87, 0.35);
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.5);
+  }
+}
+
+.secondaryButton {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #636e72;
+  background: transparent;
+  border: 2px solid #dfe4ea;
+  border-radius: $radius-btn;
+  cursor: pointer;
+
+  &:hover {
+    background: #f1f2f6;
+    color: #2d3436;
+  }
+}

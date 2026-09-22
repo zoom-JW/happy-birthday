@@ -1,0 +1,95 @@
+@import '../../style/abstracts/_variavles';
+@import '../../style/abstracts/_mixins';
+
+.container {
+  @include flex-center;
+  min-height: 100vh;
+  padding: 20px;
+  background: $bg-gradient;
+}
+
+.card {
+  @include flex-column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: $radius-card;
+  box-shadow: $shadow-main;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.iconBadge {
+  background: #ffeaa7;
+  padding: 16px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3436;
+  margin-bottom: 16px;
+
+  .highlight {
+    color: $primary-color;
+    display: inline-block;
+  }
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #636e72;
+  margin-bottom: 24px;
+
+  strong {
+    color: #0984e3;
+  }
+}
+
+.infoBox {
+  @include flex-center;
+  gap: 8px;
+  background: #eccc6822;
+  border: 1px dashed $secondary-color;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+  color: #d63031;
+  font-weight: 600;
+
+  .sparkleIcon {
+    color: $secondary-color;
+    flex-shrink: 0;
+  }
+}
+
+.startButton {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, $primary-color 0%, #ff6b81 100%);
+  border: none;
+  border-radius: $radius-btn;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255, 71, 87, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.5);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

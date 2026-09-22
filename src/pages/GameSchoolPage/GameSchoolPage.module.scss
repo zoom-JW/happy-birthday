@@ -1,0 +1,151 @@
+@import '../../style/abstracts/_variavles';
+@import '../../style/abstracts/_mixins';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $bg-gradient;
+  padding: 20px;
+  user-select: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 20px;
+  border-radius: 16px;
+  box-shadow: $shadow-main;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #2d3436;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2d3436;
+  background: #f1f2f6;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.dangerTimer {
+  color: #e74c3c;
+  animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.gameArea {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: $radius-card;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  box-shadow: $shadow-main;
+  overflow: hidden;
+  cursor: none; // Скрываем стандартный курсор мыши над игровым полем
+}
+
+.gameItem {
+  position: absolute;
+  font-size: 2.86rem;
+  transform: translate(-50%, -50%);
+  pointer-events: none; // Чтобы иконка предмета не мешала событию onMouseMove
+  will-change: top, left;
+}
+
+.basket {
+  position: absolute;
+  bottom: 20px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid $primary-color;
+  will-change: left;
+}
+
+.gameOverCard {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+  cursor: default;
+
+  h2 {
+    font-size: 2rem;
+    color: #d63031;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #636e72;
+    margin-bottom: 20px;
+  }
+}
+
+.retryButton {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: $primary-color;
+  border: none;
+  border-radius: $radius-btn;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}

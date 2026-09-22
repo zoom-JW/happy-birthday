@@ -48,3 +48,13 @@ ehthumbs.db
 .cache
 .eslintcache
 .prettiercache
+
+# Temporary & Prompt files
+gemini-code-*.md
+*.tmp
+*.temp
+
+# IDE & OS specific files
+.history/
+.vite/
+
