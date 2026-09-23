@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Timer, Trophy, ShoppingBasket } from 'lucide-react';
 import { playSFX, playBGM, stopBGM, stopAllSFX } from '../../utils/audioManager';
+import { InstructionModal } from './Instruction.tsx';
 import styles from './GameSchoolPage.module.scss';
 
 interface GameSchoolPageProps {
@@ -23,6 +24,7 @@ const BAD_ITEMS = ['🎮', '🍕', '🕷️', '💣', '📱'];
 const TARGET_SCORE = 20; // Цель: словить 20 предметов
 
 export const GameSchoolPage: React.FC<GameSchoolPageProps> = ({ onBack, onComplete }) => {
+  const [showInstruction, setShowInstruction] = useState<boolean>(true);
   const [score, setScore] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState<number>(30);
   const [items, setItems] = useState<Item[]>([]);
@@ -39,9 +41,16 @@ export const GameSchoolPage: React.FC<GameSchoolPageProps> = ({ onBack, onComple
   scoreRef.current = score;
   basketXRef.current = basketX;
 
+  // Запуск игры после закрытия модалки
+  const handleStartGame = () => {
+    setShowInstruction(false);
+    playSFX('/sounds/click.mp3');
+    playBGM('/sounds/fonMusic/gameschoolFirst.mp3', 0.5);
+  };
+
   // 1. Таймер игры
   useEffect(() => {
-    if (isGameOver) return;
+    if (showInstruction || isGameOver) return;
 
     if (timeLeft <= 0) {
       if (score < TARGET_SCORE) {
@@ -64,11 +73,11 @@ export const GameSchoolPage: React.FC<GameSchoolPageProps> = ({ onBack, onComple
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, score, isGameOver]);
+  }, [showInstruction, timeLeft, score, isGameOver]);
 
   // 2. Спавн предметов сверху
   useEffect(() => {
-    if (isGameOver || timeLeft <= 0) return;
+    if (showInstruction || isGameOver || timeLeft <= 0) return;
 
     const spawnInterval = setInterval(() => {
       const isGood = Math.random() > 0.3; // 70% хороших, 30% плохих
@@ -88,11 +97,11 @@ export const GameSchoolPage: React.FC<GameSchoolPageProps> = ({ onBack, onComple
     }, 600);
 
     return () => clearInterval(spawnInterval);
-  }, [isGameOver, timeLeft]);
+  }, [showInstruction, isGameOver, timeLeft]);
 
   // 3. Анимация падения и проверка столкновений (Collision Detection)
   useEffect(() => {
-    if (isGameOver || timeLeft <= 0) return;
+    if (showInstruction || isGameOver || timeLeft <= 0) return;
 
     let animId: number;
 
@@ -139,21 +148,40 @@ export const GameSchoolPage: React.FC<GameSchoolPageProps> = ({ onBack, onComple
 
     animId = requestAnimationFrame(updatePhysics);
     return () => cancelAnimationFrame(animId);
-  }, [isGameOver, timeLeft, onComplete]);
+  }, [showInstruction, isGameOver, timeLeft, onComplete]);
 
-  // 4. Отслеживание мыши для перемещения корзины
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!gameAreaRef.current) return;
+  // 4. Универсальное обновление позиции корзины по координате X
+  const updateBasketPositionByClientX = (clientX: number) => {
+    if (showInstruction || !gameAreaRef.current) return;
     const rect = gameAreaRef.current.getBoundingClientRect();
-    const relativeX = e.clientX - rect.left;
+    const relativeX = clientX - rect.left;
     const percentX = (relativeX / rect.width) * 100;
 
     const clampedX = Math.max(5, Math.min(95, percentX));
     setBasketX(clampedX);
   };
 
+  // Отслеживание мыши
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    updateBasketPositionByClientX(e.clientX);
+  };
+
+  // Отслеживание касаний (Touch events)
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length > 0) {
+      updateBasketPositionByClientX(e.touches[0].clientX);
+    }
+  };
+
   return (
     <div className={styles.container}>
+      {/* Окно инструкции при старте */}
+      <AnimatePresence>
+        {showInstruction && (
+          <InstructionModal onStart={handleStartGame} />
+        )}
+      </AnimatePresence>
+
       {/* Шапка с кнопкой назад и статистикой */}
       <div className={styles.header}>
         <button className={styles.backButton} onClick={onBack}>
@@ -178,6 +206,8 @@ export const GameSchoolPage: React.FC<GameSchoolPageProps> = ({ onBack, onComple
         ref={gameAreaRef}
         className={styles.gameArea}
         onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchMove}
+        onTouchMove={handleTouchMove}
       >
         {!isGameOver ? (
           <>
