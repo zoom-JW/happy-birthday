@@ -36,7 +36,7 @@ export const SoupFail: React.FC<SoupFailProps> = ({ isCorrect, onClose }) => {
         ) : (
           <>
             <h2>Как так-то?! 😱</h2>
-            <p>Как ты мог забыть блестящий суп Андрея с опарышами?! Такое шедевральное блюдо не забывается!</p>
+            <p>Как ты мог забыть блестящий суп Андрея с гусеницами?! Такое шедевральное блюдо не забывается!</p>
           </>
         )}
         <button className={styles.modalButton} onClick={onClose}>

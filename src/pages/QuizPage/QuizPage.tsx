@@ -79,6 +79,12 @@ const QUESTIONS: Question[] = [
     options: ['Доминика', 'Шарик', 'Жучка', 'Барон'],
     correctAnswer: 'Доминика',
   },
+  {
+    id: 8,
+    text: 'Кто дольше всех сидит в туалете?',
+    options: ['Артём', 'Родион', 'Мама', 'Папа'],
+    correctAnswer: 'Артём',
+  },
 ];
 
 const shuffleArray = <T,>(array: T[]): T[] => {
