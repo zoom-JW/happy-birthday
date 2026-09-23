@@ -50,6 +50,13 @@
   margin-bottom: 24px;
 }
 
+.rewardsList {
+  @include flex-column;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
 .rewardBox {
   @include flex-center;
   gap: 10px;
@@ -58,6 +65,16 @@
   padding: 16px 24px;
   border-radius: 16px;
   margin-bottom: 28px;
+  width: 100%;
+}
+
+.rewardItem {
+  @include flex-center;
+  gap: 10px;
+  background: #2ed57315;
+  border: 2px dashed #2ed573;
+  padding: 14px 20px;
+  border-radius: 16px;
   width: 100%;
 }
 

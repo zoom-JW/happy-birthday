@@ -39,7 +39,7 @@ export const FirstReward: React.FC<FirstRewardProps> = ({ onNextLevel, onBackToM
         </p>
 
         <div className={styles.rewardBox}>
-          <span className={styles.rewardValue}>100 $ 💵</span>
+          <span className={styles.rewardValue}>$50 💵</span>
         </div>
 
         <div className={styles.buttonsGroup}>

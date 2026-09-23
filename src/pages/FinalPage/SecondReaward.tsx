@@ -29,13 +29,18 @@ export const SecondReaward: React.FC<SecondReawardProps> = ({ onBackToMenu }) =>
         <h1 className={styles.title}>Квест полностью пройден! 🎉</h1>
 
         <p className={styles.description}>
-          Ты прошёл все секретные испытания! Вот твой главный подарок:
+          Ты прошёл все секретные испытания! Вот твои главные подарки:
         </p>
 
-        <div className={styles.rewardBox}>
-          <Sparkles color="#f1c40f" size={24} />
-          <span className={styles.rewardValue}>Пушистый Хомячок! 🐾</span>
-          <Sparkles color="#f1c40f" size={24} />
+        <div className={styles.rewardsList}>
+          <div className={styles.rewardItem}>
+            <Sparkles color="#f1c40f" size={24} />
+            <span className={styles.rewardValue}>Хомяк 🐹</span>
+            <Sparkles color="#f1c40f" size={24} />
+          </div>
+          <div className={styles.rewardItem}>
+            <span className={styles.rewardValue}>$50 💵</span>
+          </div>
         </div>
 
         {onBackToMenu && (
