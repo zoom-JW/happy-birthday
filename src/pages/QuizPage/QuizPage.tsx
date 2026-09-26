@@ -82,7 +82,7 @@ const QUESTIONS: Question[] = [
   {
     id: 8,
     text: 'Кто дольше всех сидит в туалете?',
-    options: ['Артём', 'Родион', 'Мама', 'Папа'],
+    options: ['Артём', 'Родиgdsdsgsgsgsgн', 'Мама', 'Папа'],
     correctAnswer: 'Артём',
   },
 ];
